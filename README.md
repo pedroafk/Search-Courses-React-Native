@@ -44,3 +44,17 @@ Este frontend espera que um backend esteja rodando em `http://localhost:8080` co
 - `GET /api/v2/post/{id}/click` - Registro de cliques
 - `GET /api/v2/post/click/counts` - Estatísticas de cliques
 
+---
+## Telas do projeto
+
+### Home
+
+Essa tela é utilizada para ver todos os cursos disponíveis, além de permitir ao usuário pesquisar por algum curso na barra de pesquisa.
+
+![alt text](./assets/images/homepage.png)
+
+### Dashboard
+
+Essa tela é utilizada para verificar a quantidade total de acessos que cada tópico obteve. Com isso, podemos destacar os cursos do melhor para o pior.
+
+![alt text](./assets/images/dashboard.png)
