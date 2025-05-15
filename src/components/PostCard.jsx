@@ -1,4 +1,5 @@
 import { formatDate } from "../utils/FormatDateUtil";
+import '../styles/PostCard.css';
 
 function PostCard({ post, onClick }) {
     return (

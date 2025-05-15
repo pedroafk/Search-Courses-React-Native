@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Dashboard from './Dashboard';
 import Home from './Home';
 import '../styles/App.css';
+import '../styles/Topbar.css';
 import '../styles/Home.css';
 import '../styles/Dashboard.css';
 
