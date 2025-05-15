@@ -1,0 +1,31 @@
+/* Estilos específicos para a página Dashboard */
+.dashboard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box; 
+}
+
+/* Wrapper do gráfico */
+.chart-wrapper {
+  width: 90%;
+  max-width: 1200px;
+  height: 90%;
+  padding: 10px;
+  background: #1e1e1e;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Regras essenciais para o Chart.js */
+.chart-wrapper > div {
+  position: relative;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 400px;
+}
