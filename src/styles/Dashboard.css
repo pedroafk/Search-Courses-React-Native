@@ -3,10 +3,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;         /* Altere de 100vw para 100% */
+  min-height: 100vh;
   padding: 20px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
+  background: transparent;
 }
 
 /* Wrapper do gráfico */

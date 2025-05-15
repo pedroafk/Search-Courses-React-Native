@@ -1,8 +1,9 @@
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
-import './Dashboard.css';
+import { fetchClickCounts } from '../services/DashboardService';
+import { buildChartData } from '../utils/BuildChartUtil';
+import '../styles/Dashboard.css';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -12,35 +13,10 @@ export default function Dashboard() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchClickCounts = async () => {
+    async function loadData() {
       try {
-        const response = await axios.get('http://localhost:8080/api/v2/post/click/counts');
-        
-        const labels = [];
-        const counts = [];
-        
-        response.data.forEach(item => {
-          const key = Object.keys(item)[0];
-          const count = item[key].count;
-          
-          const shortLabel = key.split(' ').slice(0, 4).join(' ');
-  
-          labels.push(shortLabel);
-          counts.push(count);
-        });
-
-        setChartData({
-          labels: labels,
-          datasets: [
-            {
-              label: 'Cliques',
-              data: counts,
-              backgroundColor: 'rgba(255, 71, 87, 0.8)',
-              borderColor: 'rgba(255, 71, 87, 1)',
-              borderWidth: 1,
-            },
-          ],
-        });
+        const data = await fetchClickCounts();
+        setChartData(buildChartData(data));
         setError(null);
       } catch (err) {
         setError('Erro ao carregar dados do dashboard: ' + err.message);
@@ -48,9 +24,8 @@ export default function Dashboard() {
       } finally {
         setLoading(false);
       }
-    };
-
-    fetchClickCounts();
+    }
+    loadData();
   }, []);
 
   const options = {
@@ -61,37 +36,25 @@ export default function Dashboard() {
         position: 'top',
         labels: {
           color: '#e0e0e0',
-          font: {
-            size: 14
-          }
+          font: { size: 14 }
         }
       },
       title: {
         display: true,
         text: 'Estatísticas de Cliques por Post',
         color: '#ffffff',
-        font: {
-          size: 18
-        }
+        font: { size: 18 }
       },
     },
     scales: {
       y: {
         beginAtZero: true,
-        ticks: {
-          color: '#e0e0e0'
-        },
-        grid: {
-          color: 'rgba(255, 255, 255, 0.1)'
-        }
+        ticks: { color: '#e0e0e0' },
+        grid: { color: 'rgba(255, 255, 255, 0.1)' }
       },
       x: {
-        ticks: {
-          color: '#e0e0e0',
-        },
-        grid: {
-          display: false
-        }
+        ticks: { color: '#e0e0e0' },
+        grid: { display: false }
       }
     }
   };
