@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import Dashboard from './Dashboard';
-import './App.css';
-import './Home.css';
-import './Dashboard.css';
+import '../styles/App.css';
+import '../styles/Home.css';
+import '../styles/Dashboard.css';
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -113,7 +113,7 @@ function App() {
     <Router>
       <div className="app-container">
         <div className="topbar">
-          <div className="topbar-title">Bora Estudar ?</div>
+          <div className="topbar-title">Bora Estudar?</div>
           <nav className="topbar-nav">
             <Link to="/" className="topbar-link">Início</Link>
             <Link to="/dashboard" className="topbar-link">Dashboard</Link>
