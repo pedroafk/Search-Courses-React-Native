@@ -20,8 +20,8 @@ export default function Dashboard() {
         const counts = [];
         
         response.data.forEach(item => {
-          const key = Object.keys(item)[0];
-          const count = item[key].count;
+          const key = item['title'];
+          const count = item['count'];
           
           const shortLabel = key.split(' ').slice(0, 4).join(' ');
   
